@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 09:01:31 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/11/04 18:55:21 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/11/13 12:17:27 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,154 @@ void utilise_funtion(function f, int a, int b){
 bool mycomp (char c1, char c2)
 { return std::tolower(c1)<std::tolower(c2); }
 
+// class B;
 
+// class A{
+//   public:
+//   A(){}
+//   ~A(){}
+//   void print(B b);
+// };
+
+// class B{
+//   private:
+//   int a;
+//   public:
+//   friend void A::print(B p);
+//   B():a(20){}
+//   ~B(){}
+// };
+
+// void A::print(B p){std::cout<<p.a<<"s\n";}
+
+// class a{
+//   public:
+//   int *p;
+//   a(){p = (int*)malloc(sizeof(int));std::cout<<"created\n";}
+//   ~a(){free(p);std::cout<<"deleted\n";}
+// };
 
 int main () {
-    try{
+    // B p;
+    // print(p);
+    // try{
     //std::vector<int> v(4,10);
-    ft::vector<int> v2;
+    // ft::vector<int> v2(5,10);
     std::vector<int> v;
+    // v.reserve(100);
+    v.push_back(10);
+    v.push_back(20);
+    v.push_back(30);
+    v.push_back(40);
+    v.push_back(50);
+    v.push_back(60);
+    // v.push_back(8);
+    // v.push_back(10);
+    // v.push_back(20);
+    // v.push_back(1000);
+    // v.push_back(1002);
+    // v.push_back(1003);
+    // v.push_back(1004);
 
+    ft::vector<int> v2;
+    // v2.reserve(100);
+    v2.push_back(10);
+    v2.push_back(20);
+    v2.push_back(30);
+    v2.push_back(40);
+    v2.push_back(50);
+    v2.push_back(60);
+    // v2.push_back(11);
+
+    std::cout<<"before--//after_push_back--v_size-->"<<v.size()<<std::endl;
+    std::cout<<"before----//after_push_back--v_cap_-->"<<v.capacity()<<std::endl;
+    std::cout<<"--------------------------------------------------------------\n\n";
+    std::cout<<"before----//after_push_back--v2_size-->"<<v2.size()<<std::endl;
+    std::cout<<"before----//after_push_back--v2_cap_-->"<<v2.capacity()<<std::endl;
+    // std::cout<<"--assign happend--\n\n";
+    // ft::vector<int>::iterator first = v2.begin();
+    // ft::vector<int>::iterator last = v2.end();
+    // while(first != last){
+    //   std::cout<<(*first)<<std::endl;
+    //   ++first;
+    // }
+  //   std::vector<int>::reverse_iterator rv1 = v.rbegin();
+  //   std::vector<int>::reverse_iterator rv1_last = v.rend();
+  //   ft::vector<int>::reverse_iterator rv = v2.rbegin();
+  //   ft::vector<int>::const_reverse_iterator rv_last = v2.rend();
+  //   std::cout<<(rv1[1])<<std::endl;
+  //   std::cout<<(rv[1])<<std::endl;
+  //   std::cout<<"---------------------\n\n";
+  //   while(rv != rv_last){
+  //     std::cout<<(*rv)<<std::endl;
+  //     rv++;
+  //   }
+  // std::cout<<"|||||||||||||||||||||||||||\n";
+  //   while(rv1 != rv1_last){
+  //     std::cout<<(*rv1)<<std::endl;
+  //     rv1++;
+  //   }
+    // std::cout<<it<<std::endl;
+    // for(ft::vector<int>::iterator it = v.begin(); it != v.end();++it)
+    // {
+    //   std::cout<<"----v2-->"<<*(it)<<std::endl;
+    // }
+    // std::cout<<"--copy happend--\n\n";
+    // std::cout<<"--before erase pos happend--\n\n";
+    // for(std::vector<int>::iterator it = v.begin(); it != v.end();++it)
+    // {
+    std::cout<<"---------------------------------------------------------\n\n\n";
+    // // //   //ft::vector<int>::iterator it2;
+    // // //   //it2 = it;
+    //   std::cout<<"----v-->"<<*(it)<<std::endl;
+    // // //  // std::cout<<"----v2-->"<<*(end)<<std::endl;
+    // for(ft::vector<int>::iterator it = v2.begin(); it != v2.end();++it)
+    // {
+    //   std::cout<<"----v2-->"<<*(it)<<std::endl;
+    // }
+    // }
+    // std::cout<<"--swap  happend--\n\n";
+    // v2.swap(v);
+    // v.resize(3);
+    // v2.resize(3);
+    // v2.resize(7);
+    // v.assign(v2.begin(),v2.begin() + 2);
+    // std::cout<<v.size()<<"\n";
+    //  std::vector<int>::iterator it2 = v.erase(v.begin(), v.begin() + 2);
+    //  std::cout<<"iterator return-v---->"<<*it2<<"\n";
+    // v2.insert(v2.begin(),v.begin(),v.end());
+    // it2 = v.insert(v.begin(),4);
+    // std::cout<<v.begin() + i<<std::endl;
+    //  std::vector<int>::iterator it2 = v.insert(v.begin() + 2,500);
+    // v2.insert(v2.begin(),37,88);
+    std::cout<<"-------------spliiiiiit-------------\n";
+    // ft::vector<int>::iterator it3 = v2.erase(v2.begin(), v2.begin() + 2);
+    // for(std::vector<int>::iterator it = it2; it != v.end();++it)
+    // {
+    //   std::cout<<"----v-->"<<*(it)<<std::endl;
+    // }
+    // std::cout<<"iterator return-v2---->"<<*it3<<"\n";
+     std::cout<<"--------------------------------------------------------\n\n";
+    // v.reserve(20);
+    // v.assign(3,10);
+    // std::cout<<v2.end() - v2.begin()<<std::endl;
+    // int i = 0;
+    // ft::vector<int>::iterator first = v2.begin();
+    // ft::vector<int>::iterator last = v2.end();
+    // while(first != last){
+    //   i++;
+    //   first++;
+    // }
+    // v2.assign(v.begin() ,v.end());
+    // v2.assign(6,10);
+    // v.push_back(10);
+    // v.push_back(20);
+    // v.push_back(1000);
+    // ft::vector<int> v2(v.begin(),v.end());
+    
+    // std::cout<<*(v2.begin())<<"\n";
+    // std::cout<<*(v2.end())<<"\n";
+    // ft::vector<int> v(v2.begin(),v2.end());
     //  std::cout<<"----v2_size-->"<<v2.size()<<std::endl;
     // std::cout<<"----v2_cap_-->"<<v2.capacity()<<std::endl;
 
@@ -90,19 +230,28 @@ int main () {
    // std::cout<<"----v_cap_-->"<<v.capacity()<<std::endl;
     // std::cout<<"----v-->"<<v.size()<<std::endl;
 
-    v2.push_back(10);
-    v2.push_back(20);
-    v2.push_back(1000);
-
-    v.push_back(10);
-    v.push_back(20);
-    v.push_back(20);
     
+
+    // v.push_back(10);
+    // v.push_back(20);
+    // v.push_back(20);
+    
+    // v2.erase(v2.begin());
+    
+    // std::vector<int>::iterator hl = v.insert(v.begin(),12);
+
+    std::cout<<"----v_size-->"<<v.size()<<std::endl;
+    std::cout<<"----v_cap_-->"<<v.capacity()<<std::endl<<"\n";
+
     std::cout<<"----v2_size-->"<<v2.size()<<std::endl;
     std::cout<<"----v2_cap_-->"<<v2.capacity()<<std::endl;
 
-    std::cout<<"----v_size-->"<<v.size()<<std::endl;
-    std::cout<<"----v_cap_-->"<<v.capacity()<<std::endl;
+    std::cout<<"--------------------------------------------------------------\n\n";
+    
+    // std::cout<<"---------------->hl--->"<<(*hl)<<std::endl;
+
+    // std::cout<<"----v_size-->"<<v.size()<<std::endl;
+    // std::cout<<"----v_cap_-->"<<v.capacity()<<std::endl;
     
     
     // v2.push_back(100);
@@ -125,14 +274,20 @@ int main () {
     // if (it != end) {
     //   std::cout<<"----v2-->"<<*(it)<<std::endl;
     // }
-    
-    for(ft::vector<int>::iterator it = v2.begin(); it != v2.end();++it)
+    // v.erase(v.begin());
+    // v2.erase(v2.begin());
+    for(std::vector<int>::const_reverse_iterator it = v.rbegin(); it != v.rend();++it)
     {
-      //ft::vector<int>::iterator it2;
-      //it2 = it;
-      std::cout<<"----v2-->"<<*(it)<<std::endl;
-     // std::cout<<"----v2-->"<<*(end)<<std::endl;
+    // //   //ft::vector<int>::iterator it2;
+    // //   //it2 = it;
+      std::cout<<"----v-->"<<*(it)<<std::endl;
+    // //  // std::cout<<"----v2-->"<<*(end)<<std::endl;
     }
+  std::cout<<"--------------------------------------------------------\n\n";
+    // for(ft::vector<int>::const_reverse_iterator it = v2.rbegin(); it != v2.rend();++it)
+    // {
+    //   std::cout<<"----v2-->"<<*(it)<<std::endl;
+    // }
     //for(int i = 0 ; i < v2.size() ; i++)
      // std::cout<<"----v2-->"<<v2.at(i)<<std::endl;
    // std::cout<<"----v2-->"<<v2.at(0)<<std::endl;
@@ -180,9 +335,9 @@ int main () {
   //   std::cout<<"capacity-->"<<v.capacity()<<"\n";
   //   std::cout<<"size-->"<<v.size()<<std::endl;
     // std::cout<<v.at(6)<<"\n";
-    }catch(std::exception e){
-        std::cout<<e.what()<<std::endl;
-    }
+    // }catch(std::exception e){
+    //     std::cout<<e.what()<<std::endl;
+    // }
     // std::cout<<v.capacity()<<"\n";
     // std::cout<<v.size()<<"\n";
     // for(std::vector<test>::iterator it = v.begin(); it != v.end();it++){

@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 09:52:48 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/11/13 15:28:10 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/11/22 18:16:20 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ template<class T , class Allocator = std::allocator<T> >
         void assign(InputIterator first , InputIterator last,
         typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = nullptr){
             size_type i = 0;
+            // typename InputIterator::iterator_category p;
             clear();
             vector tmp;
             while(first != last){
@@ -167,7 +168,8 @@ template<class T , class Allocator = std::allocator<T> >
     }
     
     template <class InputIterator>
-        void insert (iterator position, InputIterator first, InputIterator last){
+        void insert (iterator position, InputIterator first, InputIterator last,
+        typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = nullptr){
         vector tmp;
         tmp.assign(first, last);
         size_type n = tmp.size();
@@ -344,11 +346,11 @@ template<class T , class Allocator = std::allocator<T> >
     }
 
     reverse_iterator rbegin(){
-        return (reverse_iterator(_v_data + _v_size - 1));
+        return (reverse_iterator(_v_data + _v_size));
     }
 
     const_reverse_iterator rbegin() const {
-        return (const_reverse_iterator(_v_data + _v_size - 1));
+        return (const_reverse_iterator(_v_data + _v_size));
     }
 
     size_type size() const{
@@ -356,11 +358,11 @@ template<class T , class Allocator = std::allocator<T> >
     }
 
     reverse_iterator rend(){
-        return (reverse_iterator(_v_data - 1));
+        return (reverse_iterator(_v_data));
     }
 
     const_reverse_iterator rend() const{
-        return (const_reverse_iterator(_v_data - 1));
+        return (const_reverse_iterator(_v_data));
     }
 
     void resize(size_type n , value_type val = value_type()){
@@ -368,10 +370,7 @@ template<class T , class Allocator = std::allocator<T> >
             throw std::length_error("vector");
         size_type right_size = 0;
         if (n > _v_capacity){
-            if (_v_capacity == 0)
             reserve(n);
-            else
-            reserve(2 * _v_capacity);
         }
         if (_v_size == 0){
             assign(n,val);
@@ -429,28 +428,21 @@ template<class T , class Allocator = std::allocator<T> >
 
     template <class T2, class Alloc>
     friend bool operator<=(const vector<T2,Alloc>& lhs, const vector<T2,Alloc>& rhs){
-        if (lhs._v_size <= rhs._v_size && ft::equal(lhs.begin(),lhs.end(),rhs.begin()))
-            return (true);
-        return (false);
+        return (!(rhs < lhs));
     }
 
     template <class T2, class Alloc>
     friend bool operator>(const vector<T2,Alloc>& lhs, const vector<T2,Alloc>& rhs){
-        if (lhs._v_size > rhs._v_size)
-            return (true);
-        else
-            return(!ft::equal(lhs.begin(),lhs.end(),rhs.begin()));
-        return (false);
+        return (rhs < lhs);
     }
 
     template <class T2, class Alloc>
     friend bool operator>=(const vector<T2,Alloc>& lhs, const vector<T2,Alloc>& rhs){
-        if (lhs._v_size >= rhs._v_size)
-            return (true);
-        return (false);
+        return (!(lhs < rhs));
     }
 
-    template <class T2, class Alloc>  void swap (vector<T2,Alloc>& x, vector<T2,Alloc>& y){
+    template <class T2, class Alloc>  
+    friend void swap (vector<T2,Alloc>& x, vector<T2,Alloc>& y){
         x.swap(y);
     }
     

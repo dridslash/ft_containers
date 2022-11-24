@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:30:39 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/11/13 15:24:19 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/11/21 12:38:49 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 
 
    //p- /////////////---Iterator_TRAITS----/////////////
-
+namespace ft{
+   
     template<class Iterator>
     struct iterator_traits{
        typedef typename Iterator::value_type           value_type;
@@ -132,6 +133,7 @@
          private:
             pointer m_ptr;
    };
+   
    //r-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    //r-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    
@@ -162,11 +164,11 @@
    //y- /////////////////________MEMBER_____FUNCTIONS___________///////////////////////
          
          
-         iterator_type base()const{return current;}
+         iterator_type base()const{return (current);}
 
-         reference operator*(){return *(current);}
+         reference operator*(){return *(current - 1);}
 
-         reference operator[] (difference_type n) const{return *(current - n);}
+         reference operator[] (difference_type n) const{return *(current - 1 - n);}
 
          pointer operator->(){return &this->operator*();}
          
@@ -220,5 +222,5 @@
           protected:
             Iterator current;
    };
-
+}
 #endif

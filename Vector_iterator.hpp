@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:30:39 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/11/21 12:38:49 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/12/11 17:47:00 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ namespace ft{
 
          Iterator& operator-=(difference_type n){m_ptr -= n ; return (*this);}
 
-         Iterator operator-(difference_type n )const{Iterator tmp = *(this); tmp.m_ptr = m_ptr - n; return (tmp);}
+         Iterator operator-(difference_type n )const{return Iterator(m_ptr - n);}
 
-         Iterator operator+(difference_type n )const{Iterator tmp = *(this); tmp.m_ptr = m_ptr + n; return (tmp);}
+         Iterator operator+(difference_type n )const{return Iterator(m_ptr + n);}
          
          Iterator operator++(int){Iterator tmp = (*this); ++m_ptr; return (tmp);}
 
@@ -117,18 +117,18 @@ namespace ft{
           difference_type operator+(const Iterator&  it)const{
             return (static_cast<difference_type>(m_ptr + it.m_ptr));
          }
-         template <class Iterator>
-             bool operator==(const Iterator& rhs){return (m_ptr == rhs.base());}
-         template <class Iterator>
-             bool operator!=(const Iterator& rhs){return !(m_ptr == rhs.base());}
-         template <class Iterator>
-             bool operator<(const Iterator& rhs){return (m_ptr < rhs.base());}
-         template <class Iterator>
-             bool operator<=(const Iterator& rhs){return (m_ptr <= rhs.base());}
-         template <class Iterator>
-             bool operator>(const Iterator& rhs){return (m_ptr > rhs.base());}
-         template <class Iterator>
-             bool operator>=(const Iterator& rhs){return (m_ptr >= rhs.base());}
+         template <class Iter, class Iter2>
+             friend bool operator==(const Iter& lhs, const Iter2& rhs){return (lhs.base() == rhs.base());}
+         template <class Iter, class Iter2>
+            friend bool operator!=(const Iter& lhs, const Iter2& rhs){return (!(lhs.base() == rhs.base()));}
+         template <class Iter, class Iter2>
+           friend  bool operator<(const Iter& lhs, const Iter2& rhs){return (lhs.base() < rhs.base());}
+         template <class Iter, class Iter2>
+            friend bool operator<=(const Iter& lhs, const Iter2& rhs){return (lhs.base() <= rhs.base());}
+         template <class Iter, class Iter2>
+            friend bool operator>(const Iter& lhs, const Iter2& rhs){return (lhs.base() > rhs.base());}
+         template <class Iter, class Iter2>
+            friend bool operator>=(const Iter& lhs, const Iter2& rhs){return (lhs.base() >= rhs.base());}
 
          private:
             pointer m_ptr;

@@ -6,12 +6,12 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 09:52:48 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/11/22 18:16:20 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/12/01 13:23:07 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _LIBCPP_CONT_VECTOR
-#define _LIBCPP_CONT_VECTOR
+#ifndef _CONT_VECTOR
+#define _CONT_VECTOR
 
 #include "Vector_iterator.hpp"
 #include "struct_utils.hpp"
@@ -91,9 +91,9 @@ template<class T , class Allocator = std::allocator<T> >
 
     template <class InputIterator>
         void assign(InputIterator first , InputIterator last,
-        typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = nullptr){
+        typename ft::enable_if<!ft::is_integral<InputIterator>::value 
+        && std::__is_random_access_iterator<InputIterator>::value, InputIterator>::type* = nullptr){
             size_type i = 0;
-            // typename InputIterator::iterator_category p;
             clear();
             vector tmp;
             while(first != last){
@@ -109,6 +109,18 @@ template<class T , class Allocator = std::allocator<T> >
             }
             _v_size = s;
     }
+    
+    template <class InputIterator>
+        void assign(InputIterator first , InputIterator last,
+        typename ft::enable_if<!ft::is_integral<InputIterator>::value && std::__is_input_iterator<InputIterator>::value 
+        && !std::__is_random_access_iterator<InputIterator>::value,InputIterator>::type* = nullptr){
+            clear();
+            while(first != last){
+                push_back(*(first));
+                first++;
+            }
+    }
+    
     void assign(size_type n , const value_type& val){
         size_type i = 0;
         if (_v_data)
@@ -294,8 +306,8 @@ template<class T , class Allocator = std::allocator<T> >
     }
 
     size_type max_size()const{
-        if (sizeof(T) == sizeof(char)){
-            return(9223372036854775807);
+        if (_allocator.max_size() > PTRDIFF_MAX){
+           return(PTRDIFF_MAX);
         }
         return (_allocator.max_size());
     }
